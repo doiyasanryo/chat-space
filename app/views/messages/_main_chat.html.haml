@@ -1,0 +1,35 @@
+.chat-main
+  .chat-main-group-info
+    .chat-main-group-info-box
+      .chat-main-group-info-box-name
+        test
+        .chat-main-group-info-box-name-member-list
+          Member : ryo
+      .chat-main-group-info-box-edit
+        = link_to "#", class: "edit__btn" do
+          Edit
+  .chat-main-message-list
+    .chat-main-message-list-info
+      %p.chat-main-message-list-info-talker
+        ryo
+      %p.chat-main-message-list-info-date
+        2020/01/01 00:00:00
+    .chat-main-message-list-text
+      text
+    .chat-main-message-list-info
+      %p.chat-main-message-list-info-talker
+        ryo
+      %p.chat-main-message-list-info-date
+        2020/01/01 00:00:00
+    .chat-main-message-list-text
+      勉強中
+  .chat-main-message-form
+    .chat-main-message-form-new
+      .chat-main-message-form-new-input
+        %input.chat-main-message-form-new-input-text{placeholder: "text a message", type: "text", name: "message[content]"}
+        %label.chat-main-message-form-new-input-image
+          = icon('fas', 'image')
+          %input.chat-main-message-form-new-input-image-file{type: "file", name: "message[image]"}
+      .chat-main-message-form-new-submit
+        Send
+  
