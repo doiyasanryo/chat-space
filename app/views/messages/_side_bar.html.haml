@@ -2,12 +2,12 @@
   .side-bar-user-name
     .side-bar-user-name-box
       .side-bar-user-name-box-name
-        ryo
+        = current_user.name
       .side-bar-user-name-box-icons
-        = link_to "#", class: "box-icons" do
-          = icon('far', 'edit')
-        = link_to "#", class: "box-icons" do
-          = icon('fas', 'cog')
+        = link_to "#" do
+          = icon('far', 'edit',  class: 'box-icons')
+        = link_to edit_user_path(current_user) do
+          = icon('fas', 'cog',  class: 'box-icons')
   .side-bar-group-list
     .side-bar-group-list-block
       .side-bar-group-list-block-group-name
