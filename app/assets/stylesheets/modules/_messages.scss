@@ -39,18 +39,21 @@ $btn-color: #38aef0;
     background-color: #2f3e51;
     &-block{
       height: 100px;
-      color: #ffffff;
       padding-top: 20px;
       &-group-name{
         width: 260px;
         height: 20px;
         font-size: 15px;
         margin: 0 20px;
+        color: #ffffff;
+        text-decoration: none;
       }
       &-group-message{
         width: 260px;
         font-size: 11px;
         margin: 5px 20px 40px;
+        color: #ffffff;
+        text-decoration: none;
       }
     }
   }
