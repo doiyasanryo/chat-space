@@ -4,17 +4,15 @@
       .side-bar-user-name-box-name
         = current_user.name
       .side-bar-user-name-box-icons
-        = link_to "#" do
+        = link_to new_group_path do
           = icon('far', 'edit',  class: 'box-icons')
-        = link_to edit_user_path(current_user) do
+        = link_to edit_user_path(current_user.id) do
           = icon('fas', 'cog',  class: 'box-icons')
   .side-bar-group-list
-    .side-bar-group-list-block
-      .side-bar-group-list-block-group-name
-        techcamp
-      .side-bar-group-list-block-group-message
-        まだメッセージがありません
-      .side-bar-group-list-block-group-name
-        test
-      .side-bar-group-list-block-group-message
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      .side-bar-group-list-block
+        = link_to group_messages_path(group.id) do
+          .side-bar-group-list-block-group-name
+            = group.name
+          .side-bar-group-list-block-group-message
+            メッセージはまだありません
