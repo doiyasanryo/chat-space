@@ -46,14 +46,12 @@ $btn-color: #38aef0;
         font-size: 15px;
         margin: 0 20px;
         color: #ffffff;
-        text-decoration: none;
       }
       &-group-message{
         width: 260px;
         font-size: 11px;
         margin: 5px 20px 40px;
         color: #ffffff;
-        text-decoration: none;
       }
     }
   }
@@ -80,6 +78,11 @@ $btn-color: #38aef0;
           font-size: 12px;
           color: #999999;
           margin-top: 15px;
+          display: flex;
+          .group_member{
+            display: inline-block;
+            margin-left: 5px;
+          }
         }
       }
       &-edit{
@@ -98,29 +101,31 @@ $btn-color: #38aef0;
       }
     }
   }
-  &-message-list{
+  &-message{
     height: calc(100vh - 190px);
     background-color: #fafafa;
     padding: 35px 40px 0;
-    &-info{
-      display: flex;
-      margin-bottom: 12px;
-      &-talker{
-        font-size: 16px;
-        color: #333333;
-        font-weight: bold;
+    &-list{
+      &-info{
+        display: flex;
+        margin-bottom: 12px;
+        &-talker{
+          font-size: 16px;
+          color: #333333;
+          font-weight: bold;
+        }
+        &-date{
+          font-size: 12px;
+          color: #999999;
+          margin-left: 10px;
+        }
       }
-      &-date{
+      &-text{
         font-size: 12px;
-        color: #999999;
-        margin-left: 10px;
+        color: #434A54;
+        font-size: 14px;
+        padding-bottom: 46px;
       }
-    }
-    &-text{
-      font-size: 12px;
-      color: #434A54;
-      font-size: 14px;
-      padding-bottom: 46px;
     }
   }
   &-message-form{
