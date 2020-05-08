@@ -2,17 +2,17 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       var html =`
-      <div class="chat-main-message-list">
-        <div class="chat-main-message-list-info">
-          <div class="chat-main-message-list-info-talker">
+      <div class="chat-main-message-box" data-message-id=${message.id}>
+        <div class="chat-main-message-box-info">
+          <div class="chat-main-message-box-info-talker">
             ${message.user_name}
           </div>
-          <div class="chat-main-message-list-info-date">
+          <div class="chat-main-message-box-info-date">
             ${message.created_at}
           </div>
         </div>
-        <div class="chat-main-message-list-text">
-          <p class="chat-main-message-list-text__content">
+        <div class="chat-main-message-box-text">
+          <p class="chat-main-message-list-box__content">
             ${message.content}
           </p>
         </div>
@@ -21,21 +21,21 @@ $(function(){
         return html;
     } else{
       var html =`
-      <div class="chat-main-message-list">
-        <div class="chat-main-message-list-info">
-          <div class="chat-main-message-list-info-talker">
+      <div class="chat-main-message-box" data-message-id=${message.id}>
+        <div class="chat-main-message-box-info">
+          <div class="chat-main-message-box-info-talker">
             ${message.user_name}
           </div>
-          <div class="chat-main-message-list-info-date">
+          <div class="chat-main-message-box-info-date">
             ${message.created_at}
           </div>
         </div>
-          <div class="chat-main-message-list-text">
-            <p class="chat-main-message-list-text__content">
-              ${message.content}
-            </p>
-          </div>
-        </div>`
+        <div class="chat-main-message-box-text">
+          <p class="chat-main-message-list-box__content">
+            ${message.content}
+          </p>
+        </div>
+      </div>`
         return html;
     };
   }
@@ -61,6 +61,32 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-    })
+    });
   })
+
+  var reloadMessages = function() {
+    var last_message_id = $('.chat-main-message-box:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.chat-main-message').append(insertHTML);
+        $('.chat-main-message').animate({ scrollTop: $('.chat-main-message')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert("error");
+    })
+  }
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
