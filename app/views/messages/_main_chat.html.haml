@@ -10,11 +10,10 @@
               %li.group_member
                 = user.name
       .chat-main-group-info-box-edit
-        = link_to "http://localhost:3000/groups/1/edit", class: "edit__btn" do
+        = link_to edit_group_path(@group.id), class: "edit__btn" do
           Edit
   .chat-main-message
-    .chat-main-message-list
-      = render @messages
+    = render @messages
   .chat-main-message-form
     = form_for [@group, @message], html: {class: "chat-main-message-form-new"} do |f|
       .chat-main-message-form-new-input
